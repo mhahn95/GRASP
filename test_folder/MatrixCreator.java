@@ -95,7 +95,7 @@ public class MatrixCreator {
 			
 			int k=0;  //column (wp) counter
 			for (@SuppressWarnings("unused") Workpackage wp : p.workpackages){
-				final String costOutput = getCellWithoutDelimiter("--"+ round(p.consortialPartnerCosts[j][k]) + "€", cSize);
+				final String costOutput = getCellWithoutDelimiter("--"+ round(p.consortialPartnerCosts[j][k]) + "ï¿½", cSize);
 				final String hoursOutput = getCellWithoutDelimiter("" + round(partner.getTotalHoursForPackage(k)) + "h", hSize);
 				final String whiteOutput = getCellWithoutDelimiter("", whitespaceSize);
 				
@@ -104,7 +104,7 @@ public class MatrixCreator {
 			}
 			
 			//Partner Lines Sum
-			printCellWithoutDelimiter("cSum:-" + round(p.consortialPartnerCostsSums[j])+"€-", cSumSize);
+			printCellWithoutDelimiter("cSum:-" + round(p.consortialPartnerCostsSums[j])+"ï¿½-", cSumSize);
 			printCellWithoutDelimiter("hSum:-" + round(partner.getTotalHours())+"-", hSumSize);
 			System.out.print("--" + partner.name + "--");
 			
@@ -118,7 +118,7 @@ public class MatrixCreator {
 				int l=0;
 				for(double hours : person.hoursInPackages){
 					if(hours != 0){
-						final String costOutput = getCellWithoutDelimiter("  "+(round(hours*person.hourly_rate))+"€", cSize);
+						final String costOutput = getCellWithoutDelimiter("  "+(round(hours*person.hourly_rate))+"ï¿½", cSize);
 						final String hoursOutput = getCellWithoutDelimiter(""+round(hours) + "h", hSize);
 						
 						printCell(costOutput + hoursOutput + mergeArrays(person.roles, p.workpackages.get(l).roles), columnSize);
@@ -130,7 +130,7 @@ public class MatrixCreator {
 				}
 				
 				//Person Lines Sum
-				printCellWithoutDelimiter("cSum: " + round(person.hourly_rate*person.getHourSum())+"€", cSumSize);
+				printCellWithoutDelimiter("cSum: " + round(person.hourly_rate*person.getHourSum())+"ï¿½", cSumSize);
 				printCellWithoutDelimiter("hSum: " + round(person.getHourSum()), hSumSize);
 				System.out.print(" -"+person.name+"-");
 				
@@ -143,7 +143,7 @@ public class MatrixCreator {
 		
 		j=0;
 		for (Workpackage wp : p.workpackages){
-			final String costOutput = getCellWithoutDelimiter("--" + round(wp.costs) + "€", cSize);
+			final String costOutput = getCellWithoutDelimiter("--" + round(wp.costs) + "ï¿½", cSize);
 			final String hoursOutput = getCellWithoutDelimiter("" + round(wp.duration) + "h", hSize);
 			final String whiteOutput = getCellWithoutDelimiter("", whitespaceSize);
 			
@@ -282,10 +282,6 @@ public class MatrixCreator {
 	}
 	
 	public static ProjectConfigData readData(String file) throws IOException {
-		// ///////////////////
-		// now with .properties file
-		// ///////////////////
-
 		final Properties properties = new Properties();
 		final BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
 		properties.load(stream);
